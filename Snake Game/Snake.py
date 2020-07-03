@@ -73,10 +73,7 @@ def pause():
 
                 elif event.key == pygame.K_q:
                     pygame.quit()
-                    
-
-        #gameDisplay.fill(white)
-        
+                     
         clock.tick(5)
 
 def text_to_button(msg, color, buttonx, buttony, buttonwidth, buttonheight, size = "small"):
@@ -156,9 +153,7 @@ def game_intro():
                           red,
                           50)
 
-##        message_to_screen("Press C to play, P to pause or Q to quit.",
-##                          black,
-##                          180)
+
 
         button("play", 150,450,100,50, green, light_green, action="play")
         
