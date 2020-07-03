@@ -33,7 +33,7 @@ appleimg = pygame.image.load('apple.png')
 
 eat_apple = mixer.Sound('eat.wav')
 lose = mixer.Sound('youlose.wav')
-
+song_list = ['animals.wav','joker.wav','savlov.wav']
 
 clock = pygame.time.Clock()
 
@@ -220,14 +220,15 @@ def gameLoop():
     snakeLength = 1
 
     randAppleX,randAppleY = randAppleGen()
-
+    ost = mixer.Sound(song_list[random.randint(0,2)])
+    ost.play(-1)
     lose.stop()
     while not gameExit:
         
         
 
         if gameOver == True:
-          
+            ost.stop()
             lose.play()
             message_to_screen("Game over",
                               red,
@@ -287,15 +288,10 @@ def gameLoop():
         lead_x += lead_x_change
         lead_y += lead_y_change
         
-        gameDisplay.fill(black)
-
-        
-        #pygame.draw.rect(gameDisplay, red, [randAppleX, randAppleY, AppleThickness, AppleThickness])
-
+        gameDisplay.fill(black)     
         
         gameDisplay.blit(appleimg, (randAppleX, randAppleY))
-        
-        
+                
         snakeHead = []
         snakeHead.append(lead_x)
         snakeHead.append(lead_y)
@@ -307,12 +303,10 @@ def gameLoop():
         for eachSegment in snakeList[:-1]:
             if eachSegment == snakeHead:
                 gameOver = True
-
-        
+       
         snake(block_size, snakeList)
 
         score(snakeLength-1)
-
         
         pygame.display.update()
 
@@ -332,6 +326,5 @@ def gameLoop():
         
     pygame.quit()
     
-
 game_intro()
 gameLoop()
