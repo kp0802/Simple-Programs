@@ -52,13 +52,14 @@ def pause():
 
     paused = True
     message_to_screen("Paused",
-                      black,
+                      red,
                       -100,
                       size="large")
 
     message_to_screen("Press C to continue or Q to quit.",
-                      black,
-                      25)
+                      green,
+                      25,
+                      size = "medium")
     pygame.display.update()
 
     while paused:
